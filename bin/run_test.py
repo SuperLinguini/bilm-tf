@@ -1,11 +1,14 @@
 
 import argparse
+import os
 
 from bilm.training import test, load_options_latest_checkpoint, load_vocab
 from bilm.data import LMDataset, BidirectionalLMDataset
 
 def main(args):
     options, ckpt_file = load_options_latest_checkpoint(args.save_dir)
+    if args.ckpt_name:
+        ckpt_file = os.path.join(args.save_dir, args.ckpt_name)
 
     # load the vocab
     if 'char_cnn' in options:
@@ -32,6 +35,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Compute test perplexity')
     parser.add_argument('--save_dir', help='Location of checkpoint files')
+    parser.add_argument('--ckpt_name', help='Checkpoint file name')
     parser.add_argument('--vocab_file', help='Vocabulary file')
     parser.add_argument('--test_prefix', help='Prefix for test files')
     parser.add_argument('--batch_size',
@@ -40,4 +44,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     main(args)
+
 
