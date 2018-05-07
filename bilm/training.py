@@ -1057,7 +1057,7 @@ def load_vocab(vocab_file, max_word_length=None):
         return Vocabulary(vocab_file, validate_file=True)
 
 
-def dump_weights(tf_save_dir, outfile):
+def dump_weights(tf_save_dir, outfile, ckpt=None):
     '''
     Dump the trained weights from a model to a HDF5 file.
     '''
@@ -1079,6 +1079,8 @@ def dump_weights(tf_save_dir, outfile):
         return outname
 
     options, ckpt_file = load_options_latest_checkpoint(tf_save_dir)
+    if ckpt:
+        ckpt_file = os.path.join(tf_save_dir, ckpt)
 
     config = tf.ConfigProto(allow_soft_placement=True)
     with tf.Session(config=config) as sess:
