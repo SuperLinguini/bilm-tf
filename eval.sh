@@ -1,0 +1,2 @@
+python -u bin/run_test.py --test_prefix='/home/ubuntu/bilm-tf/test_files/wiki.valid.tokens' --vocab_file='/home/ubuntu/bilm-tf/vocab.txt' --save_dir='/home/ubuntu/bilm-tf/compare' --ckpt_name 'model.ckpt-11410'
+python -u bin/run_test.py --test_prefix='/home/ubuntu/bilm-tf/test_files/wiki.test.tokens' --vocab_file='/home/ubuntu/bilm-tf/vocab.txt' --save_dir='/home/ubuntu/bilm-tf/compare' --ckpt_name 'model.ckpt-11410'

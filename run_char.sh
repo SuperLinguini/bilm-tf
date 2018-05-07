@@ -1,6 +1,6 @@
 for i in {0..25}
 do
-	echo "Epoch $i" |& tee -a compare.log
+	echo "Epoch $i" |& tee -a compare_char.log
 	if [ $i -eq 0 ]
 	then
 		python -u bin/char.py --train_prefix='/home/ubuntu/bilm-tf/wikitext-2/wiki.train.tokens' --vocab_file /home/ubuntu/bilm-tf/vocab.txt --save_dir /home/ubuntu/bilm-tf/compare_char |& tee -a compare_char.log
